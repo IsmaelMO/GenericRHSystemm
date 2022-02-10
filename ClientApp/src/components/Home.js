@@ -16,7 +16,7 @@ export class Home extends Component {
 
             <div className="col-2 d-flex flex-column">
                 <a href='/register' className="btn btn-primary mb-3" >Alta de usuarios</a>
-                <a href='' className="btn btn-primary mb-3">Consultar usuarios</a>
+                <a href='/fetch-data' className="btn btn-primary mb-3">Consultar usuarios</a>
             </div>
         
       </div>

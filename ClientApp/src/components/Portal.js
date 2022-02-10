@@ -38,7 +38,7 @@ export class Portal extends Component {
                                 
 
                                 <div class="pt-1 mb-4">
-                                    <button class="btn btn-info btn-lg btn-block" type="button">Iniciar sesión</button>
+                                    <a href="/home" class="btn btn-info btn-lg btn-block" type="button">Iniciar sesión</a>
                                 </div>
                                 {/*
                                 <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">¿Olvidó su contraseña?</a></p>
