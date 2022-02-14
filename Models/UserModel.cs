@@ -7,13 +7,13 @@ namespace GenericRHSystem.Models
 {
     public class UserModel
     {
-        public int intId { get; set; }
-        public string strUserName { get; set; }
-        public string strEmail { get; set; }
-        public string strPassword { get; set; }
-        public bool boolStatus { get; set; }
-        public string strGender { get; set; }
-        public DateTime dateDateCreation { get; set; }
+        public int id { get; set; }
+        public string email { get; set; }
+        public string userr { get; set; }
+        public string passwordd { get; set; }
+        public bool status { get; set; }
+        public string gender { get; set; }
+    //    public DateTime dateDateCreation { get; set; }
 
     }
 }

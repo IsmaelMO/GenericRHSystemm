@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export class FetchData extends Component {
   static displayName = FetchData.name;
@@ -9,36 +10,53 @@ export class FetchData extends Component {
   }
 
   componentDidMount() {
-    this.populateWeatherData();
-  }
+   //   this.populateWeatherData();
+      let APIurl = "https://localhost:44301/api/User";
+      let headers = {
+          'Content-Type': 'application/json',
+          'Accept': "*/*"
+      };
+      axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+      axios.get(APIurl, headers)
+          .then(response => {
+              var self = this;
+              if (response.status == 200) {
+                  self.setState({ users: response.data, loading: false });
+              }
+
+          })
+          .catch(error => console.error(error));
+    }
+
+
 
     static renderUsersTable(users) {
-    return (
-      <table className='table table-striped' aria-labelledby="tabelLabel">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Usuario</th>
-            <th>Correo</th>
-            <th>Sexo</th>
-            <th>Estatus</th>
+        return (
+          <table className='table table-striped' aria-labelledby="tabelLabel">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Usuario</th>
+                <th>Correo</th>
+                <th>Sexo</th>
+                <th>Estatus</th>
 
-          </tr>
-        </thead>
-        <tbody>
-            {users.map(user =>
-                <tr key={user.intId}>
-                    <td>{user.intId}</td>
-                    <td>{user.strUserName}</td>
-                    <td>{user.strEmail}</td>
-                    <td>{user.strGender}</td>
-                    <td>{user.boolStatus ? "Activo": "Inactivo" }</td>
-            </tr>
+              </tr>
+            </thead>
+            <tbody>
+                {users.map(user =>
+                    <tr key={user.id}>
+                        <td>{user.id}</td>
+                        <td>{user.userr}</td>
+                        <td>{user.email}</td>
+                        <td>{user.gender}</td>
+                        <td>{user.status ? "Activo": "Inactivo" }</td>
+                </tr>
                   
-          )}
-        </tbody>
-      </table>
-    );
+              )}
+            </tbody>
+          </table>
+        );
   }
 
   render() {
@@ -55,9 +73,5 @@ export class FetchData extends Component {
     );
   }
 
-  async populateWeatherData() {
-    const response = await fetch('users');
-    const data = await response.json();
-      this.setState({ users: data, loading: false });
-  }
+ 
 }
