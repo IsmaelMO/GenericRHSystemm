@@ -16,11 +16,10 @@ export class Register extends Component {
         super(props);
 
         this.state = {
-            id: 1,
             email: '',
             userr: '',
             passwordd: '',
-            status: '',
+            status: 0,
             gender: ''
         }
         this.validateForm = this.validateForm.bind(this)
@@ -63,11 +62,27 @@ export class Register extends Component {
 
     submitForm(data) {
         var options = {
-            data: data,
-            headers: { "content-type": "application/json" }
+            
+            headers: { "Content-Type": "application/json" }
         }
-        axios.post('https://localhost:44301/api/User', options)
+       
+        var dataSend = {
+            email: data.email,
+            userr: data.userr,
+            passwordd: data.passwordd,
+            status: data.status == 'true' ? true: false,
+            gender: data.gender
+        }
+      
+        axios.post(
+            'https://localhost:44301/api/User',
+            dataSend,
+            options
+        )
             .then(response => {
+                if (response.status == 200) {
+                    toast.success("El usuario se ha registrado exitosamente");
+                }
                 console.log(response)
             })
             .catch(error => console.error(error));
@@ -94,7 +109,7 @@ export class Register extends Component {
                                         <div className='row'>
                                             <div className='col-12 mb-2 pl-5 pr-5'>
                                                 <label className='lbl-form col-12 font-weight-bold'>Usuario</label>
-                                                <input className='input-modal col-12' type="text" name="userr" onChange={this.handleChange} required />
+                                                <input className='input-modal col-12' type="text" name="userr" minLength="7" onChange={this.handleChange} required />
                                             </div>
                                             <div className='col-12 mb-2 pl-5 pr-5'>
                                                 <label className='lbl-form col-12 font-weight-bold'>Correo</label>
@@ -102,7 +117,7 @@ export class Register extends Component {
                                             </div>
                                             <div className='col-12 mb-2 pl-5 pr-5'>
                                                 <label className='lbl-form col-12 font-weight-bold'>Contraseña</label>
-                                                <input className='input-modal col-12' type="text" name="passwordd" minLength="10" onChange={this.handleChange} required />
+                                                <input className='input-modal col-12' type="text" name="passwordd" maxLength="10" onChange={this.handleChange} required />
                                             </div>
                                             
                                             <div className='col-12 mb-2 pl-5 pr-5'>

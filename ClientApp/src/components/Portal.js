@@ -15,9 +15,9 @@ export class Portal extends Component {
 
                         <div class="px-5 ms-xl-4 mb-4 d-flex justify-content-center">
                            
-                            {/*  <img src={" https://www.axsistec.com/web/images/logo.png"}
+                            {  <img src={" https://www.axsistec.com/web/images/logo.png"}
                                 alt="Login image" class="mb-5"
-                                style={{ width: '140px !important', heigth: '50px !important' }} />*/}
+                                style={{ width: '140px !important', heigth: '50px !important' }} />}
                         </div>
 
                         <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">

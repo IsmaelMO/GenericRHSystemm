@@ -40,6 +40,7 @@ export class FetchData extends Component {
                 <th>Correo</th>
                 <th>Sexo</th>
                 <th>Estatus</th>
+                <th>Acciones</th>
 
               </tr>
             </thead>
@@ -51,6 +52,14 @@ export class FetchData extends Component {
                         <td>{user.email}</td>
                         <td>{user.gender}</td>
                         <td>{user.status ? "Activo": "Inactivo" }</td>
+                        <td>
+                            <button className="btn btn-blue-primary text-white btn-blue-primary mr-4" style={{ minWidth: "28px", background: 'cadetblue' }} target="_blank" data-toggle="tooltip" data-placement="top" data-original-title="Order form">
+                                Eliminar
+                            </button>
+                            <button className="btn btn-blue-primary text-white btn-blue-primary" style={{ minWidth: "28px", background: 'cadetblue' }} target="_blank" data-toggle="tooltip" data-placement="top" data-original-title="Order form">
+                                Editar
+                            </button>
+                        </td>
                 </tr>
                   
               )}
